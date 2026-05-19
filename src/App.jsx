@@ -9,7 +9,7 @@ const App = () => {
   const postsWithAllData = postsFromServer.map(post => ({
     ...post,
     user: usersFromServer.find(u => u.id === post.userId),
-    comments: commentsFromServer.filter(c => c.postId === post.id)
+    comments: commentsFromServer.filter(c => c.postId === post.id),
   }));
 
   return (
@@ -19,4 +19,5 @@ const App = () => {
     </section>
   );
 };
+
 export default App;
