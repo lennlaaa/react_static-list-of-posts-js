@@ -1,16 +1,20 @@
-import { UserInfo } from '../UserInfo';
-import { CommentList } from '../CommentList';
+import { UserInfo } from '../UserInfo/UserInfo';
+import { CommentInfo } from '../CommentInfo/CommentInfo';
 
 export const PostInfo = ({ post }) => (
   <div className="PostInfo">
-    <h3>{post.title}</h3>
+    <h2 className="PostInfo__title">{post.title}</h2>
 
-    <p>{post.body}</p>
+    <p className="PostInfo__body">{post.body}</p>
 
     <UserInfo user={post.user} />
 
-    <div className="PostInfo__comments">
-      <CommentList comments={post.comments} />
-    </div>
+    {post.comments.length === 0 ? (
+      <div data-cy="NoCommentsMessage">No comments yet</div>
+    ) : (
+      post.comments.map(comment => (
+        <CommentInfo key={comment.id} comment={comment} />
+      ))
+    )}
   </div>
 );

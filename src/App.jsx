@@ -5,7 +5,7 @@ import commentsFromServer from './api/comments.json';
 import usersFromServer from './api/users.json';
 import { PostList } from './components/PostList';
 
-const App = () => {
+export const App = () => {
   const postsWithAllData = postsFromServer.map(post => ({
     ...post,
     user: usersFromServer.find(u => u.id === post.userId),
@@ -19,5 +19,3 @@ const App = () => {
     </section>
   );
 };
-
-export default App;
